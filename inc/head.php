@@ -43,11 +43,28 @@
                             Cart
                         </a>
                     </li>
+                    <?php
+                    if (!empty($_SESSION['loginname'])) { ?>
+                        <li><a><?= 'Welcome, ' . $_SESSION['loginname'] . ' !'; ?></a></li>
+                        <a href="logout.php" class="btn btn-warning navbar-btn">
+                            <span class="glyphicon" aria-hidden="true"></span>
+                            Se déconnecter
+                        </a>
+                        <?php
+                    } else { ?>
+                        <li><a href="login.php" class="btn btn-warning navbar-btn">
+                                <span class="glyphicon" aria-hidden="true"></span>
+                                Se connecter
+                            </a></li> <?php
+                    } ?>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>Hello Wilder !</strong>
+        <?php
+        if (!empty($_SESSION['loginname'])) { ?>
+        <strong><?= 'Hello ' . $_SESSION['loginname'] . ' !'; ?></strong>
+        <?php } ?>
     </div>
 </header>
